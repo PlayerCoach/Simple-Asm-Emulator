@@ -198,11 +198,11 @@ class ProgramLoader:
             base_addr = int(addr_part.strip(), 16)
             values = data_part.strip().split()
 
-        for i, val in enumerate(values):
-            expected_value = int(val, 16)
-            actual_value = self.cpu.read_dword(base_addr + i * 4)
-            if actual_value != expected_value:
-                print(f"Mismatch at address {base_addr + i*4:#010x}: expected {expected_value:#010x}, got {actual_value:#010x}")
-                return False
+            for i, val in enumerate(values):
+                expected_value = int(val, 16)
+                actual_value = self.cpu.read_dword(base_addr + i * 4)
+                if actual_value != expected_value:
+                    print(f"Mismatch at address {base_addr + i*4:#010x}: expected {expected_value:#010x}, got {actual_value:#010x}")
+                    return False
         return True
        
